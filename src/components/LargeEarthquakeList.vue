@@ -36,16 +36,15 @@
 </template>
 
 <script>
-import {eventBus} from '../main.js';
 
 export default {
   name: 'large-earthquake-list',
   props: ['largeEarthquakes'],
   methods: {
     createDate(earthquake) {
-      const aDate = new Date(earthquake.properties.time);
-      const string = aDate.toDateString();
-      return string;
+      const convertedDate = new Date(earthquake.properties.time);
+      const dateString = convertedDate.toDateString();
+      return dateString;
     }
   }
 
