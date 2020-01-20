@@ -1,21 +1,6 @@
 <template lang="html">
   <div>
     <h3>Earthquakes from 2000 - 2020 with magnitude over 8.0</h3>
-    <!-- <ul>
-      <li v-for="earthquake in largeEarthquakes">
-        <dl>
-          <dt>Location:</dt>
-          <dd>{{ earthquake.properties.place }}</dd>
-          <dt>Magnitude:</dt>
-          <dd>{{ earthquake.properties.mag }}</dd>
-          <dt>MMI:</dt>
-          <dd>{{ earthquake.properties.mmi }}</dd>
-          <dt>Date:</dt>
-          <dd>{{ new Date(earthquake.properties.time) }}</dd>
-        </dl>
-        <hr/>
-      </li>
-    </ul> -->
     <thead>
       <tr>
         <td>Location</td>
@@ -25,10 +10,10 @@
       </tr>
     </thead>
     <tr v-for="earthquake in largeEarthquakes">
+      <td></td>
       <td>{{ earthquake.properties.place }}</td>
       <td>{{ earthquake.properties.mag }}</td>
       <td>{{ earthquake.properties.mmi }}</td>
-      <!-- <td>{{ new Date(earthquake.properties.time) }}</td> -->
       <td>{{ createDate(earthquake) }}</td>
     </tr>
 
@@ -41,6 +26,7 @@ export default {
   name: 'large-earthquake-list',
   props: ['largeEarthquakes'],
   methods: {
+
     createDate(earthquake) {
       const convertedDate = new Date(earthquake.properties.time);
       const dateString = convertedDate.toDateString();
@@ -49,6 +35,7 @@ export default {
   }
 
 }
+
 </script>
 
 <style lang="css" scoped>
@@ -79,4 +66,5 @@ tr:nth-child(even) {
 thead{
   font-weight: bold;
 }
+
 </style>

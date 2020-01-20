@@ -1,21 +1,30 @@
 <template lang="html">
   <div>
-    <thead>
-      <tr>
-        <td>Location</td>
-        <td>Magnitude</td>
-        <td>MMI</td>
-        <td>Date</td>
-      </tr>
-    </thead>
-  <tr v-for="earthquake in earthquakes">
-    <td>{{ earthquake.properties.place }}</td>
-    <td>{{ earthquake.properties.mag }}</td>
-    <td>{{ earthquake.properties.mmi }}</td>
-    <!-- <td>{{ new Date(earthquake.properties.time) }}</td> -->
-    <td>{{ createDate(earthquake) }}</td>
-  </tr>
-</div>
+    <table>
+      <thead>
+        <tr>
+          <td></td>
+          <td>Location</td>
+          <td>Magnitude</td>
+          <td>MMI</td>
+          <td>Date</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-if="this.earthquakes.length === 0">
+          <td>No data to display. Please try different criteria.</td>
+        </tr>
+        <tr v-for="(earthquake, index) in earthquakes">
+          <td>{{ (index+1) }}</td>
+          <td>{{ earthquake.properties.place }}</td>
+          <td>{{ earthquake.properties.mag }}</td>
+          <td>{{ earthquake.properties.mmi }}</td>
+          <td>{{ createDate(earthquake) }}</td>
+          <td>{{  }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -28,11 +37,13 @@ export default {
       earthquakes: []
     }
   },
+
   mounted(){
     eventBus.$on('earthquakes', (earthquakes) => {
       this.earthquakes = earthquakes
     });
   },
+
   methods: {
     createDate(earthquake) {
       const convertedDate = new Date(earthquake.properties.time);
@@ -40,7 +51,6 @@ export default {
       return dateString;
     }
   }
-  // props: ['earthquakes']
 }
 </script>
 
