@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Earthquake Tracker</h1>
+    <h1>Earthquake Tracker App</h1>
     <earthquake-filter-form />
     <display-map />
     <earthquakes-list />
