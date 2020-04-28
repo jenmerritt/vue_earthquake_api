@@ -1,4 +1,4 @@
-**Earthquakes App**
+## Earthquakes App
 
 Deployed: http://earthquakes-jmmerritt.now.sh
 
