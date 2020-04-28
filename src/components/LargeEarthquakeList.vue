@@ -1,21 +1,23 @@
 <template lang="html">
-  <div>
-    <h3>Earthquakes from 2000 - 2020 with magnitude over 8.0</h3>
-    <thead>
-      <tr>
-        <td>Location</td>
-        <td>Magnitude</td>
-        <td>MMI</td>
-        <td>Date</td>
+  <div id="large-earthquakes-wrap">
+    <h3>Earthquakes with magnitude over 8.0</h3>
+    <table id="large-earthquakes-table">
+      <thead>
+        <tr>
+          <td>Location</td>
+          <td>Magnitude</td>
+          <td>MMI</td>
+          <td>Date</td>
+        </tr>
+      </thead>
+      <tr v-for="earthquake in largeEarthquakes">
+        <td>{{ earthquake.properties.place }}</td>
+        <td>{{ earthquake.properties.mag }}</td>
+        <td>{{ earthquake.properties.mmi }}</td>
+        <td>{{ createDate(earthquake) }}</td>
+        <td><a :href="earthquake.properties.url" target="_blank">More info</a></td>
       </tr>
-    </thead>
-    <tr v-for="earthquake in largeEarthquakes">
-      <td></td>
-      <td>{{ earthquake.properties.place }}</td>
-      <td>{{ earthquake.properties.mag }}</td>
-      <td>{{ earthquake.properties.mmi }}</td>
-      <td>{{ createDate(earthquake) }}</td>
-    </tr>
+    </table>
 
   </div>
 </template>
@@ -39,6 +41,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#large-earthquakes-wrap {
+  text-align: center;
+}
+
+#large-earthquakes-table {
+  margin: 0 auto;
+}
 
 dd{
   text-align:left;

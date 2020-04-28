@@ -1,8 +1,8 @@
 <template lang="html">
-  <form v-on:submit.prevent>
-    <input type="text" v-model="userDefinedStartTime" placeholder="Start format: yyyy-mm-dd">
-    <input type="text" v-model="userDefinedEndTime" placeholder="End format: yyyy-mm-dd">
-    <input type="text" v-model="userDefinedMagnitude" placeholder="Enter Magnitude">
+  <form v-on:submit.prevent id="find-filter-form">
+    <input type="text" v-model="userDefinedStartTime" placeholder="Date Start format: yyyy-mm-dd">
+    <input type="text" v-model="userDefinedEndTime" placeholder="Date End format: yyyy-mm-dd">
+    <input type="text" v-model="userDefinedMagnitude" placeholder="Enter Minimum Magnitude">
     <input type="submit" v-on:click="handleClick">
   </form>
 </template>
@@ -36,6 +36,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#find-filter-form{
+  margin: 0 auto;
+  text-align:center;
+  margin-bottom: 35px;
+}
 
 input[type=text]{
   padding:10px;

@@ -1,9 +1,9 @@
 <template lang="html">
   <div>
-    <table>
+    <table id="earthquakes-list-table">
       <thead>
         <tr>
-          <td></td>
+          <td>#</td>
           <td>Location</td>
           <td>Magnitude</td>
           <td>MMI</td>
@@ -11,19 +11,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-if="this.earthquakes.length === 0">
-          <td>No data to display. Please try different criteria.</td>
-        </tr>
         <tr v-for="(earthquake, index) in earthquakes">
           <td>{{ (index+1) }}</td>
           <td>{{ earthquake.properties.place }}</td>
           <td>{{ earthquake.properties.mag }}</td>
           <td>{{ earthquake.properties.mmi }}</td>
           <td>{{ createDate(earthquake) }}</td>
-          <td>{{  }}</td>
+          <td><a :href="earthquake.properties.url" target="_blank">More Info</a></td>
         </tr>
       </tbody>
     </table>
+    <p id="no-data" v-if="this.earthquakes.length === 0">
+          No data to display. Please try different criteria.
+        </p>
   </div>
 </template>
 
@@ -55,6 +55,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#earthquakes-list-table {
+  margin: 0 auto;
+  min-width: 50%;
+}
+
+#no-data{
+  text-align:center;
+}
+
 td{
   padding: 20px;
   border-bottom: 1px solid #000;
